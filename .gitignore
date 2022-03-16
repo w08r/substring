@@ -1,0 +1,6 @@
+.cache/
+bazel-bin
+bazel-out
+bazel-substring
+bazel-testlogs
+compile_commands.json
