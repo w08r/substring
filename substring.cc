@@ -1,7 +1,7 @@
 #include "substring.h"
 
 namespace wob {
-    std::tuple<bool, size_t> find(std::string needle, std::string haystack) {
+    std::tuple<bool, size_t> find(std::string const& needle, std::string const& haystack) {
         auto nl = needle.length();
         for (auto i = 0ul; i < 1 + haystack.length() - nl; i++) {
             auto found = true;
