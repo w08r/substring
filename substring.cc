@@ -1,12 +1,6 @@
 #include "substring.h"
 #include <iostream>
 
-void* operator new(std::size_t n)
-{
-    std::cout << "[allocating " << n << " bytes]\n";
-    return malloc(n);
-}
-
 namespace wob {
     std::tuple<bool, size_t> find(std::string_view needle, std::string_view haystack) {
         auto nl = needle.length();
