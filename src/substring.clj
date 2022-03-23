@@ -25,7 +25,7 @@
   "Search for needle as a substring of haystack.
    Return the first position found or -1 if not present."
   (-> (loop [p 0 [fst & rst] (slider haystack (.length needle))]
-        (condp
+        (cond
           (= fst needle) p
           rst (recur (inc p) rst)
           :else -1))))
