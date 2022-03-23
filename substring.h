@@ -1,6 +1,6 @@
 #include <string>
-#include <tuple>
+#include <utility>
 
 namespace wob {
-    std::tuple<bool, size_t> find(std::string_view needle, std::string_view haystack);
+    std::pair<size_t, bool> find(std::string_view needle, std::string_view haystack);
 }
