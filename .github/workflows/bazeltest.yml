@@ -11,7 +11,7 @@ jobs:
       with:
         path: "~/.cache/bazel"
         key: bazel
-    - run: bazel coverage --combined_report=lcov //:substring_test
+    - run: bazel coverage --combined_report=lcov //:substring_test --copt="--std=c++17"
     - name: Report code coverage
       uses: zgosalvez/github-actions-report-lcov@v1
       with:
