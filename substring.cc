@@ -10,6 +10,6 @@ namespace wob {
                 found &= haystack[i+j] == needle[j];
             if (found) return std::make_pair(i, true);
         }
-        return std::make_tuple(0, false);
+        return std::make_pair(0ul, false);
     }
 }
