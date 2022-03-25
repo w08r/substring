@@ -17,11 +17,12 @@
 
 (spec/fdef strpos
   :args :substring/find-args
-  :fn #(and (<= (:ret %) (.length (-> % :args :haystack)))
-            (or (>= (:ret %) 0) (= -1 (:ret %))))
+  :fn #(let [r (:ret %)]
+         (and (<= r (.length (-> % :args :haystack)))
+              (or (>= r 0) (= r -1))))
   :ret int?)
 
-(defn strpos [needle haystack]
+(defn ^Long strpos [^CharSequence needle ^CharSequence haystack]
   "Search for needle as a substring of haystack.
    Return the first position found or -1 if not present."
   (-> (loop [p 0 [fst & rst] (slider haystack (.length needle))]
