@@ -9,9 +9,9 @@
 (defn- slider
   ([^String text window-len] (slider text window-len 0))
   ([^String text window-len cur] (lazy-seq
-                          (when (<= (+ cur window-len) (.length text))
-                            (cons (substring text cur window-len)
-                                  (slider text window-len (inc cur)))))))
+                                  (when (<= (+ cur window-len) (.length text))
+                                    (cons (substring text cur window-len)
+                                          (slider text window-len (inc cur)))))))
 
 (spec/def :substring/find-args (spec/cat :needle string? :haystack string?))
 
@@ -35,4 +35,4 @@
   (strpos "a" "baa")                    ;=> 1
   (strpos "c" "baa")                    ;=> -1
   (strpos "abcd" "abcabcdabcde")        ;=> 3
-)
+  )

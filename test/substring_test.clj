@@ -1,8 +1,8 @@
 (ns substring-test
-   (:require [substring :as ss]
-             [clojure.spec.alpha :as s]
-             [clojure.test.check.generators :as gen]
-             [clojure.spec.test.alpha :as stest]))
+  (:require [substring :as ss]
+            [clojure.spec.alpha :as s]
+            [clojure.test.check.generators :as gen]
+            [clojure.spec.test.alpha :as stest]))
 
 (use 'clojure.test)
 
@@ -14,13 +14,12 @@
 (use-fixtures :once instr-fns)
 
 (def str-gen #(gen/tuple
-          (gen/fmap clojure.string/join
-                    (gen/vector
-                     (gen/elements ["a" "b"])))
-          (gen/fmap clojure.string/join
-                    (gen/vector
-                     (gen/elements ["a" "b" "c"])))))
-
+               (gen/fmap clojure.string/join
+                         (gen/vector
+                          (gen/elements ["a" "b"])))
+               (gen/fmap clojure.string/join
+                         (gen/vector
+                          (gen/elements ["a" "b" "c"])))))
 
 (defn pass? [t]
   (every? #(not (:failure %)) t))
