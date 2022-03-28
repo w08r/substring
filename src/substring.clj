@@ -17,19 +17,20 @@
 
 (spec/fdef strpos
   :args :substring/find-args
-  :fn #(let [r (:ret %)]
-         (and (<= r (.length (-> % :args :haystack)))
-              (or (>= r 0) (= r -1))))
+  :fn #(let [^Long   r (:ret %)
+             ^String n (-> % :args :haystack)]
+         (and (<= r (.length n)) (or (>= r 0) (= r -1))))
   :ret int?)
 
-(defn ^Long strpos [^String needle ^String haystack]
+(defn ^Long strpos
   "Search for needle as a substring of haystack.
-   Return the first position found or -1 if not present."
-  (-> (loop [p 0 [fst & rst] (slider haystack (.length needle))]
-        (cond
-          (= fst needle) p
-          rst (recur (inc p) rst)
-          :else -1))))
+  Return the first position found or -1 if not present."
+  [^String needle ^String haystack]
+  (loop [p 0 [fst & rst] (slider haystack (.length needle))]
+    (cond
+      (= fst needle) p
+      rst (recur (inc p) rst)
+      :else -1)))
 
 (comment
   (strpos "a" "baa")                    ;=> 1

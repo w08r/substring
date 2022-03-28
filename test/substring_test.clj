@@ -31,13 +31,13 @@
 
 (deftest basic
   (is (= (ss/strpos "abcd" "abcabcdabcde") 3))
-  (is (= (ss/strpos "abc" "abcabcdabcde") 0))
+  (is (zero? (ss/strpos "abc" "abcabcdabcde")))
   (is (= (ss/strpos "z" "abcabcdabcde") -1)))
 
 (deftest empty-strings
-  (is (= (ss/strpos "" "") 0))
+  (is (zero? (ss/strpos "" "")))
   (is (= (ss/strpos "a" "") -1))
-  (is (= (ss/strpos "" "a") 0)))
+  (is (zero? (ss/strpos "" "a"))))
 
 (deftest null-inputs
   (is (thrown? clojure.lang.ExceptionInfo (ss/strpos nil nil) -1)))
