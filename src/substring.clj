@@ -26,11 +26,10 @@
   "Search for needle as a substring of haystack.
   Return the first position found or -1 if not present."
   [^String needle ^String haystack]
-  (loop [p 0 [fst & rst] (slider haystack (.length needle))]
-    (cond
-      (= fst needle) p
-      rst (recur (inc p) rst)
-      :else -1)))
+  (let [s (slider haystack (.length needle))]
+    (-> (keep-indexed (fn [idx item] (when (= item needle) idx)) s)
+        (first)
+        (or -1))))
 
 (comment
   (strpos "a" "baa")                    ;=> 1

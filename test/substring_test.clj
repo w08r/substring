@@ -2,9 +2,8 @@
   (:require [substring :as ss]
             [clojure.spec.alpha :as s]
             [clojure.test.check.generators :as gen]
-            [clojure.spec.test.alpha :as stest]))
-
-(use 'clojure.test)
+            [clojure.spec.test.alpha :as stest])
+  (:use [clojure.test]))
 
 (defn instr-fns [f]
   (stest/instrument `ss/strpos)
